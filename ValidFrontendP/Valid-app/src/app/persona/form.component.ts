@@ -37,7 +37,7 @@ private activatedRoute: ActivatedRoute) { }
   ): void {
 
 
-    this.persona.procesado=procesado;
+    procesado=this.persona.procesado;
     this.personaService.create(this.persona)
       .subscribe(
        persona => {

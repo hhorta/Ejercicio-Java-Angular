@@ -3,7 +3,7 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de clientes</h5>
     <div class="my-2 text-left">
-      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/person/form']">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/personas/form']">
         Crear Cliente
       </button>
     </div>
@@ -30,27 +30,26 @@
         <tbody>
           <tr *ngFor="let persona of personas">
             <td>{{ persona.id }}</td>
-            <td>{{ persona.name }}</td>
-            <td>{{ persona.surname }}</td>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.apellido }}</td>
             <td>
-              <div class="form-check" style="margin: auto auto;" *ngIf="persona.process else check">
-                 <input class="form-check-input" type="checkbox" checked (change)="checkValue(persona.process)">
-                <label class="form-check-label" for="defaultCheck1" >
-                  Procesado
+              <div class="form-check" style="margin: auto auto;" *ngIf="persona.procesado else check" >
+                <input class="form-check-input" type="checkbox" checked disabled>
+                <label class="form-check-label" for="defaultCheck1">
+              Procesado
                 </label>
               </div>
               <ng-template #check>
-                <div class="form-check" *ngIf="!persona.process">
-				  <input class="form-check-input" type="checkbox">
-               
+                <div class="form-check" *ngIf="!persona.procesado">
+                  <input class="form-check-input" type="checkbox"  disabled>
                   <label class="form-check-label" for="defaultCheck1">
-                    No Procesado
+                   No Procesado
                   </label>
                 </div>
               </ng-template>
             </td>
             <td>
-              <button type="button" name="editar"  [routerLink]="['/person/form', persona.id]"
+              <button type="button" name="editar"  [routerLink]="['/personas/form', persona.id]"
                 class="btn btn-primary btn-sm">Cambiar Estado</button>
             </td>
 
